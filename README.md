@@ -15,5 +15,6 @@ Certain fields in the gradle configuration have been intentionally left blank fo
 - `uploadArchives.repositories.mavenDeployer.pom.groupId` (`build.gradle`)
   - Typically the same as your `group`, and should reference the destination of the artifact in artifactory
 - `rootProject.name` (`settings.gradle`)
+  - Typically the same as your `archivesBaseName`
 
 The `dependencies` section of the `build.gradle` has also been left blank so you can add only the minimum dependencies your lib requires.
