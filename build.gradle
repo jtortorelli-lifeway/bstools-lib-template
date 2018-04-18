@@ -1,0 +1,35 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+repositories {
+    mavenLocal()
+    maven { url 'http://artifactory/bsolutions-repo-group'}
+    mavenCentral()
+}
+
+group = ''
+archivesBaseName = ''
+version = '1.0.0-SNAPSHOT'
+
+def artifactoryUser = System.getProperty("artifactoryUser")
+def artifactoryPassword = System.getProperty("artifactoryPassword")
+
+dependencies {
+
+
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "http://artifactory/libs-release-local"){
+                authentication(userName: artifactoryUser, password: artifactoryPassword)
+            }
+            snapshotRepository(url: 'http://artifactory/libs-snapshot-local') {
+                authentication(userName: artifactoryUser, password: artifactoryPassword)
+            }
+            pom.artifactId = ''
+            pom.groupId = ''
+        }
+    }
+}
